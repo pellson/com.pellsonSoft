@@ -23,9 +23,10 @@ public class SnmpTrapCommandResponder implements CommandResponder {
 		}
 		logger.info("[SnmpTrapCommandResponder] Receive snmptrap message from " + event.getPeerAddress());
 		logger.info("[SnmpTrapCommandResponder] Send snmp trap message to active mq.");
-		activeMqSender.sendMessage(event);
+		//activeMqSender.sendMessage(event);
+		logger.info("[SnmpTrapCommandResponder]"+event);
 	}
-	public void setActiveMqSender(ActiveMQSender activeMqSender) {
+	/*public void setActiveMqSender(ActiveMQSender activeMqSender) {
 		this.activeMqSender = activeMqSender;
-	}
+	}*/
 }

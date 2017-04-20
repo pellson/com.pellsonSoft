@@ -18,14 +18,14 @@ import org.snmp4j.util.MultiThreadedMessageDispatcher;
 import org.snmp4j.util.ThreadPool;
 
 /**
- * SNMPTrap告警监听�?
+ * SNMPTrap告警监听
  * @author tianshuangren
  */
 public class SnmpTrapListener implements Runnable {
 	private static Logger log = Logger.getLogger(SnmpTrapListener.class);
 	private int poolSize;
 	private String listenAddress;
-	private ActiveMQSender activeMqSender;
+	//private ActiveMQSender activeMqSender;
 	public void setPoolSize(int poolSize) {
 		this.poolSize = poolSize;
 	}
@@ -47,7 +47,7 @@ public class SnmpTrapListener implements Runnable {
 		log.info("[SnmpTrapListener] Snmptrap listener init start.");
 		ThreadPool threadPool = ThreadPool.create("Trap ", poolSize);
 		Address address = GenericAddress.parse(listenAddress);
-        TransportMapping<?> transport = null;
+        TransportMapping transport = null;
         try {
 	        if(address  instanceof  UdpAddress){  
 	            transport = new DefaultUdpTransportMapping((UdpAddress)address);  
@@ -60,14 +60,14 @@ public class SnmpTrapListener implements Runnable {
 	        snmp.getMessageDispatcher().addMessageProcessingModel(new MPv2c());   
 			snmp.listen();
 			SnmpTrapCommandResponder responder = new SnmpTrapCommandResponder();
-			responder.setActiveMqSender(activeMqSender);
+			//responder.setActiveMqSender(activeMqSender);
 			snmp.addCommandResponder(responder);
 			log.info("[SnmpTrapListener] Snmptrap listener init successful.");
 		} catch (IOException e) {
 			log.error("Snmptrap listener init error, error message: " + e.getMessage());
 		}
 	}
-	public void setActiveMqSender(ActiveMQSender activeMqSender) {
+	/*public void setActiveMqSender(ActiveMQSender activeMqSender) {
 		this.activeMqSender = activeMqSender;
-	}
+	}*/
 }
