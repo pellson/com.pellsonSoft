@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="demo30">
+    <wb-module deploy-name="snmptrap">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
-        <property name="context-root" value="demo30"/>
-        <property name="java-output-path" value="/demo30/build/classes"/>
+        <property name="java-output-path" value="/snmptrap/build/classes"/>
+        <property name="context-root" value="snmptrap"/>
     </wb-module>
 </project-modules>
